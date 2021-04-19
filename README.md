@@ -1,4 +1,4 @@
-# movie-search
+# interview-prep-vue
 
 ## Project setup
 ```
