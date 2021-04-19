@@ -20,5 +20,9 @@ npm run build
 npm run lint
 ```
 
+### Technologies Used in Project-to be updated
+- VueJS
+- Vuetify
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
