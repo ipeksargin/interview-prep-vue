@@ -1,12 +1,13 @@
 const axios = require('axios')
 
-export const runGetRequestWithParams = async () => { 
+export const runGetRequestWithParams = async (movieTitle) => {
+    const year = "2020";
     const apiKey = "71cb4251"
-    const URL = `http://www.omdbapi.com/?apikey=${apiKey}`;
+    const URL = `http://www.omdbapi.com/?apikey=${apiKey}&t=${movieTitle}&y=${year}`;
     const response = await axios.get(URL);
 
     if (response.status != 200){
-        throw Error("API Get Request Failed");
+        return "API Error"
     }
     return response
 }
