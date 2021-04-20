@@ -1,41 +1,35 @@
 <template>
-  <v-card class="overflow-hidden">
-    <v-app-bar
-      absolute
-      color="indigo darken-2"
-      dark
-      shrink-on-scroll
-      prominent
-      scroll-target="#scrolling-techniques"
-    >
-      <v-app-bar-title>Search a Movie</v-app-bar-title>
+  <v-card
+    color="grey darken-1"
+    flat
+    tile
+  >
+    <v-toolbar color="grey lighten-3">
+      <v-toolbar-title>Search a Movie</v-toolbar-title>
 
-      <v-spacer />
+      <v-spacer></v-spacer>
 
       <v-text-field
         placeholder="Make a Search"
         filled
         dense
-        class="expand-search mt-1"
+        class="expand-search mt-5"
         prepend-inner-icon="mdi-magnify"
       ></v-text-field>
 
       <v-btn icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
-    </v-app-bar>
-    <v-sheet id="scrolling-techniques" class="overflow-y-auto" max-height="785">
-      <v-container style="height: 1000px"></v-container>
-    </v-sheet>
+    </v-toolbar>
   </v-card>
 </template>
 
 <script>
+
 export default {
   name: "SearchBar",
   data() {
-    return {
-    };
+    return {};
   },
 };
 </script>
