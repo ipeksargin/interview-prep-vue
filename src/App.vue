@@ -38,9 +38,7 @@ export default {
       if (movieIsEmpty) return;
       const response = await runGetRequestWithParams(movieTitle);
       respondedMovie.value = [response.data];
-      console.log(respondedMovie.value);
       isListOpen.value = true;
-      console.log(isListOpen.value);
     }
 
     function getAndPassClickedValue(clickedItem) {
@@ -48,7 +46,6 @@ export default {
       clickedItemArr.value.push(clickedItem); // save to local storage
 
       localStorage.setItem("movies", JSON.stringify(clickedItemArr));
-
       console.log(clickedItemArr);
     }
 
