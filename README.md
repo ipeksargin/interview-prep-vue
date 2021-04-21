@@ -23,6 +23,7 @@ npm run lint
 ### Technologies Used in Project-to be updated
 - VueJS
 - Vuetify
+- Vue Composition API
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
