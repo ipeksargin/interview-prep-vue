@@ -66,7 +66,6 @@ export default {
 
     async function getInputValue() {
       movieTitle.value = this.inputValue;
-      console.log(movieTitle.value);
       if (!movieTitle.value) {
         movieIsEmpty.value = true;
       }
