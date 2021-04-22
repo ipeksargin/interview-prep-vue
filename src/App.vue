@@ -29,9 +29,14 @@ export default {
     let respondedMovie = ref([]);
     let isListOpen = ref(false);
     let clickedItemArr = ref([]);
+    let localStorageArr = ref([]);
   
     onMounted(() => {
-      console.log("a");
+      console.log("mounted");
+      if(JSON.parse(localStorage.getItem("movies"))){
+        clickedItemArr.value = JSON.parse(localStorage.getItem("movies"))
+        localStorageArr.value = JSON.parse(localStorage.getItem("movies"));
+      }
     });
 
     async function searchByInputValue(movieTitle, movieIsEmpty) {
