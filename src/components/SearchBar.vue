@@ -3,6 +3,11 @@
     <v-card color="grey darken-1" flat tile>
       <v-toolbar color="grey lighten-3">
         <v-toolbar-title>Search a Movie</v-toolbar-title>
+        <v-spacer></v-spacer>
+
+        <v-subheader
+          >It searches among the movies released in 2020.</v-subheader
+        >
 
         <v-spacer></v-spacer>
 
@@ -24,7 +29,10 @@
     <v-alert border="top" color="red lighten-2" dark v-if="movieIsEmpty">
       Please enter a movie name.
     </v-alert>
-    <v-list class="mx-auto" max-width="400" v-if="isListOpen && !movieIsEmpty">
+    <v-alert border="top" color="red lighten-2" dark v-else-if="notFoundMovie">
+      {{ notFoundMovieStr }}
+    </v-alert>
+    <v-list class="mx-auto" max-width="400" v-else-if="isListOpen">
       <v-list-item-group mandatory color="indigo">
         <v-list-item v-for="(item, i) in movieList" :key="i">
           <v-list-item-content>
@@ -48,7 +56,7 @@ export default {
   data() {
     return {
       inputValue: "",
-      title: ""
+      title: "",
     };
   },
   props: {
@@ -58,17 +66,22 @@ export default {
     movieList: {
       type: Array,
     },
+    notFoundMovie: {
+      type: Boolean,
+    },
+    notFoundMovieStr: {
+      type: String,
+    },
+    movieIsEmpty: {
+      type: Boolean
+    }
   },
   setup() {
-    let movieIsEmpty = ref(false);
-    let movieTitle = ref('');
+    let movieTitle = ref("");
     let clickedItem = ref([]);
 
     async function getInputValue() {
       movieTitle.value = this.inputValue;
-      if (!movieTitle.value) {
-        movieIsEmpty.value = true;
-      }
       if (movieTitle.value.includes(" ")) {
         movieTitle.value = movieTitle.value.split(" ").join("+");
       }
@@ -76,11 +89,11 @@ export default {
     }
 
     function getClickedValue(item) {
-      clickedItem.value = item
+      clickedItem.value = item;
       this.$emit("getClickedValue", clickedItem.value);
     }
 
-    return { getInputValue, movieIsEmpty, getClickedValue };
+    return { getInputValue, getClickedValue };
   },
 };
 </script>
