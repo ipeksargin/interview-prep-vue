@@ -48,7 +48,7 @@ export default {
 
     function getAndPassClickedValue(clickedItem) {
       isListOpen.value = false;
-      clickedItemArr.value.push(clickedItem); // save to local storage
+      clickedItemArr.value.push(clickedItem);
 
       localStorage.setItem("movies", JSON.stringify(clickedItemArr));
       console.log(clickedItemArr);
