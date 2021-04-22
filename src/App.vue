@@ -6,6 +6,8 @@
         @getInputValue="searchByInputValue"
         :isListOpen="isListOpen"
         :movieList="respondedMovie"
+        :notFoundMovie="notFoundMovie"
+        :notFoundMovieStr="notFoundMovieStr"
       />
       <v-container>
         <MovieItem
@@ -29,29 +31,37 @@ export default {
     let respondedMovie = ref([]);
     let isListOpen = ref(false);
     let clickedItemArr = ref([]);
-    let localStorageArr = ref([]);
-  
-    onMounted(() => {
-      console.log("mounted");
-      if(JSON.parse(localStorage.getItem("movies"))){
-        clickedItemArr.value = JSON.parse(localStorage.getItem("movies"))
-        localStorageArr.value = JSON.parse(localStorage.getItem("movies"));
+    let notFoundMovieStr = ref("Movie not found!");
+    let movieEmptyStr = ref("Incorrect IMDb ID.")
+    let notFoundMovie = ref(false);
+    let movieIsEmpty = ref(false);
+
+
+    onMounted(async () => {
+      if (JSON.parse(localStorage.getItem("movies"))) {
+        clickedItemArr.value = JSON.parse(localStorage.getItem("movies"));
       }
     });
 
-    async function searchByInputValue(movieTitle, movieIsEmpty) {
-      if (movieIsEmpty) return;
+    async function searchByInputValue(movieTitle) {
       const response = await runGetRequestWithParams(movieTitle);
       respondedMovie.value = [response.data];
       isListOpen.value = true;
+      if (response.data.Error === notFoundMovieStr.value) {
+        notFoundMovie.value = true;
+      }else if(response.data.Error === movieEmptyStr.value) {
+        movieIsEmpty.value = true;
+        isListOpen.value = false;
+      }else {
+        notFoundMovie.value = false;
+        movieIsEmpty.value = false
+      }
     }
 
     function getAndPassClickedValue(clickedItem) {
       isListOpen.value = false;
       clickedItemArr.value.push(clickedItem);
-
-      localStorage.setItem("movies", JSON.stringify(clickedItemArr));
-      console.log(clickedItemArr);
+      localStorage.setItem("movies", JSON.stringify(clickedItemArr.value));
     }
 
     return {
@@ -60,6 +70,9 @@ export default {
       searchByInputValue,
       getAndPassClickedValue,
       clickedItemArr,
+      notFoundMovie,
+      notFoundMovieStr,
+      movieIsEmpty
     };
   },
   components: {
