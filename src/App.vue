@@ -32,10 +32,9 @@ export default {
     let isListOpen = ref(false);
     let clickedItemArr = ref([]);
     let notFoundMovieStr = ref("Movie not found!");
-    let movieEmptyStr = ref("Incorrect IMDb ID.")
+    let movieEmptyStr = ref("Incorrect IMDb ID.");
     let notFoundMovie = ref(false);
     let movieIsEmpty = ref(false);
-
 
     onMounted(async () => {
       if (JSON.parse(localStorage.getItem("movies"))) {
@@ -49,12 +48,12 @@ export default {
       isListOpen.value = true;
       if (response.data.Error === notFoundMovieStr.value) {
         notFoundMovie.value = true;
-      }else if(response.data.Error === movieEmptyStr.value) {
+      } else if (response.data.Error === movieEmptyStr.value) {
         movieIsEmpty.value = true;
         isListOpen.value = false;
-      }else {
+      } else {
         notFoundMovie.value = false;
-        movieIsEmpty.value = false
+        movieIsEmpty.value = false;
       }
     }
 
@@ -72,7 +71,7 @@ export default {
       clickedItemArr,
       notFoundMovie,
       notFoundMovieStr,
-      movieIsEmpty
+      movieIsEmpty,
     };
   },
   components: {
