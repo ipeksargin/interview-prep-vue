@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card color="grey darken-1" flat tile>
-      <v-toolbar color="grey lighten-3">
+      <v-toolbar color="grey darken-3">
         <v-toolbar-title>Search a Movie</v-toolbar-title>
         <v-spacer></v-spacer>
 
@@ -21,7 +21,7 @@
         ></v-text-field>
         <v-spacer></v-spacer>
 
-        <v-btn color="primary" elevation="4" @click="getInputValue()"
+        <v-btn color="purple" elevation="4" @click="getInputValue()"
           >Search</v-btn
         >
       </v-toolbar>
