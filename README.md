@@ -5,6 +5,15 @@
 npm install
 ```
 
+### Technologies Used in Project-to be updated
+- VueJS
+- Vuetify
+- Vue Composition API
+- Axios 
+
+### Deployed version of App
+https://moviesearchbyvue.netlify.app/
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
@@ -20,13 +29,3 @@ npm run build
 npm run lint
 ```
 
-### Technologies Used in Project-to be updated
-- VueJS
-- Vuetify
-- Vue Composition API
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-### Deployed version of App
-https://moviesearchbyvue.netlify.app/
